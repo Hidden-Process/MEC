@@ -3,7 +3,7 @@ y <- c(3,4.5,7,10,15)
 
 N <- 5
 
-# Ejemplo de ajuste parabólico.
+# Ejemplo de ajuste exponencial.
 # y = a * b^x
 # ln(y) = ln(a) + x * ln(b)
 # Aplicamos ln a la y, a, b pero no a la x
