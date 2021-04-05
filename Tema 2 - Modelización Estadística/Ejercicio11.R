@@ -27,11 +27,8 @@ cat(sprintf("El ajuste quedaría de la siguinete manera y =  %f * %f^x \n", exp(
 
 # Usando Modelo Exponencial:
 
-# (gsub("x",1,0.435275*1.741101^x))  es equivalente a y_est
-# y_est = (damos valores del vector x a la expresión: y=0.435275*1.741101^x)
-
 evaluar <- function(vec){
-  0.435275*1.741101^vec
+  exp(res[1])*exp(res[2])^vec
 } 
 
 y_est = evaluar(x)
@@ -44,6 +41,8 @@ R2_Exp <- 1 - (VarR/VarY)
 
 model <- lm(y~x)
 R2_Lin <-summary(model)$r.squared 
+
+# Comparación de modelos:
 
 cat(sprintf("El coeficiente de determinación del ajuste exponencial es: %f", R2_Exp))
 cat(sprintf("El coeficiente de determinación del ajuste lineal es: %f", R2_Lin))
