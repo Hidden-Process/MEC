@@ -162,10 +162,17 @@ hh <- rnorm(100,175,10)
 desviacion <- sqrt(mean((hh - mean(hh))^2))
 zi <- (hh - mean(hh))/desviacion
 
-# Momentos
+# Momentos de orden 1:
 
 mOrd <- function(x,r) mean(x^r)
 mCen <-function(x,r) mean((x - mean(x))^r)
+
+# Momentos de orden 2:
+
+
+Mord2 <- function(x, y, r, s) mean(x ^ r * y ^ s)
+Mcentr2 <- function(x, y, r, s) mean((x - mean(x)) ^ r * (y - mean(y)) ^ s)
+
 
 # Cálculo de la media usando momento ordinario
 
@@ -217,6 +224,9 @@ x <- ap
 y <- 1:144
 mean(x * y) - mean(x) * mean(y)
 cov(x, y) * (length(ap)-1) / length(ap)
+
+Mcentr2(x, y, 1, 1)
+Mord2(x, y, 1, 1) - mean(x) * mean(y)
 
 #  Trabajo con intervalos:
 
