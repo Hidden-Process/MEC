@@ -30,10 +30,14 @@ cat(sprintf("El ajuste quedaría de la siguinete manera y =  %f * %f^x \n", exp(
 # (gsub("x",1,0.435275*1.741101^x))  es equivalente a y_est
 # y_est = (damos valores del vector x a la expresión: y=0.435275*1.741101^x)
 
-y_est = c(0.435275*1.741101,0.435275*1.741101^2,0.435275*1.741101^3,0.435275*1.741101^4,0.435275*1.741101^5)
+evaluar <- function(vec){
+  0.435275*1.741101^vec
+} 
 
-VarY <- (sum(y^2)/N) - (sum(y)/N)^2
-VarR <- (sum((y-y_est)^2)/N) - (sum(y-y_est)/N)^2
+y_est = evaluar(x)
+
+VarY <- mean(y^2) - mean(y)^2 
+VarR <- mean((y - y_est)^2) - (mean((y - y_est)))^2
 R2_Exp <- 1 - (VarR/VarY)
 
 # Usando modelo Lineal:
@@ -48,8 +52,11 @@ cat(sprintf("Por tanto el mejor ajuste es es el exponencial, ya que explica el  
 # Apartado D:
 
 #Coeficientes del modelo Exponencial.
+
 exp <- list(exp(res[1]),exp(res[2]))
+
 # Coeficientes del modelo Lineal:
+
 lin <- model$coefficients
 
 expfunct <- function(x){
