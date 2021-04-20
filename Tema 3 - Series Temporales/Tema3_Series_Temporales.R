@@ -9,11 +9,11 @@ localFolder='C:\data'
 xx <- scan(str_c(localFolder, 'ts01.dat'))
 uk <- ts(xx, start=c(1969, 1), frequency=4)
 
-# Ejemplo del primer valor de la media movil de orden 3.
+# Ejemplo del primer valor de la media movil de orden 4.
 
 (uk[1] * .5 + uk[2] + uk[3] + uk[4] + uk[5] * .5) / 4
 
-# Componente tendencia, mediante una media movil de orden 3
+# Componente tendencia, mediante una media movil de orden 4.
 
 tend <- stats::filter(uk, c(.5, 1, 1, 1, .5) / 4)
 
@@ -82,7 +82,7 @@ lines(desestA, col=4)
 ##############################################################
 
 # Esto mete en xx un vector 1:n, donde n es el tamaño de uk
-xx <- seq.along(uk)
+xx <- seq_along(uk)
 
 # regresión lineal
 model <- lm(desestM ~ xx)
